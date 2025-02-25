@@ -1,11 +1,14 @@
-package org.test;
+package org.test.pages;
 
+import org.openqa.selenium.Alert;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.nio.file.Paths;
 import java.time.Duration;
 
 public class CommonActionPages {
@@ -43,7 +46,7 @@ public class CommonActionPages {
         element.sendKeys(text);
     }
 
-    public void sendText(WebElement element){
+    public void sendForm(WebElement element){
         element.submit();
     }
 
@@ -51,4 +54,35 @@ public class CommonActionPages {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         wait.until(ExpectedConditions.visibilityOf(element));
     }
+
+    public void uploadFile(String path, WebElement element){
+        String filePath = Paths.get(path).toAbsolutePath().toString();
+        element.sendKeys(filePath);
+    }
+
+    public void waitForAlert() {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
+        wait.until(ExpectedConditions.alertIsPresent());
+    }
+
+    public void acceptAlert(){
+        Alert alert = driver.switchTo().alert();
+        alert.accept();
+    }
+
+    public String getCurrentURL(){
+        return driver.getCurrentUrl();
+    }
+
+    public boolean isElementInvisible(WebElement element) {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
+        return wait.until(ExpectedConditions.invisibilityOf(element));
+    }
+
+    public void waitForSelector(WebElement element) {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
+        wait.until(ExpectedConditions.visibilityOf(element)).click();
+
+    }
+
 }

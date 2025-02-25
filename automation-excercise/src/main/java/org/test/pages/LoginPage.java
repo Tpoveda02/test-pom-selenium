@@ -1,4 +1,4 @@
-package org.test;
+package org.test.pages;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -6,6 +6,7 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 public class LoginPage extends CommonActionPages {
+
 
     @FindBy(xpath = "//input[@data-qa='login-email']")
     private WebElement inputEmail;
@@ -24,13 +25,15 @@ public class LoginPage extends CommonActionPages {
         PageFactory.initElements(driver, this);
     }
 
+
     public String verifyUserIncorrect(){
         clearInput(inputEmail);
         clearInput(inputPassword);
         writeText(inputEmail, "taniazoelpoveda@gmail.com");
         writeText(inputPassword, "password");
-        sendText(buttonLogin);
+        sendForm(buttonLogin);
         waitExplicitTime(paragraphAlert);
         return getText(paragraphAlert);
     }
+
 }

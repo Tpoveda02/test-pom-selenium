@@ -5,8 +5,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.openqa.selenium.WebDriver;
 
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.test.HomePage;
-import org.test.LoginPage;
+import org.test.pages.HomePage;
 
 public class BaseTest {
     protected WebDriver driver;
@@ -14,7 +13,6 @@ public class BaseTest {
 
     @BeforeEach
     public void setUp(){
-
         System.setProperty("webdriver.chrome.driver","./src/test/resources/chromedriver/chromedriver.exe");
         driver = new ChromeDriver();
         homePage = new HomePage(driver);

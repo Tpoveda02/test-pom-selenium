@@ -1,9 +1,9 @@
 import baseTest.BaseTest;
 import org.junit.jupiter.api.Test;
-import org.test.LoginPage;
+import org.test.pages.LoginPage;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class LoginPageTest extends BaseTest {
+public class LoginTest extends BaseTest {
 
     protected LoginPage loginPage;
 
