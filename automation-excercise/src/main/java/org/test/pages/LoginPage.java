@@ -25,13 +25,14 @@ public class LoginPage extends CommonActionPages {
         PageFactory.initElements(driver, this);
     }
 
-
-    public String verifyUserIncorrect(){
+    public void sendLogin(String email, String password){
         clearInput(inputEmail);
         clearInput(inputPassword);
-        writeText(inputEmail, "taniazoelpoveda@gmail.com");
-        writeText(inputPassword, "password");
+        writeText(inputEmail, email);
+        writeText(inputPassword, password);
         sendForm(buttonLogin);
+    }
+    public String getIncorrectUser(){
         waitExplicitTime(paragraphAlert);
         return getText(paragraphAlert);
     }

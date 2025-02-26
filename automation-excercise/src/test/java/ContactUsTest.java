@@ -1,17 +1,13 @@
 import baseTest.BaseTest;
 import org.junit.jupiter.api.Test;
-import org.test.pages.ContactUsPage;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class ContactUsTest extends BaseTest {
-
-    protected ContactUsPage contactUsPage;
+class ContactUsTest extends BaseTest {
 
     @Test
-    public void testIncorrectUser() {
+    void testIncorrectUser() {
         homePage.goToContactUsPage();
-        contactUsPage = new ContactUsPage(driver);
         String successMessage = contactUsPage.sendFormContactUs();
         assertEquals("Success! Your details have been submitted successfully.", successMessage);
         assertEquals("https://automationexercise.com/", contactUsPage.goToHome());

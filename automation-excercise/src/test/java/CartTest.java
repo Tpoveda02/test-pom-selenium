@@ -1,17 +1,32 @@
 import baseTest.BaseTest;
 import org.junit.jupiter.api.Test;
-import org.test.pages.CartPage;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-public class CartTest extends BaseTest {
-    protected CartPage cartPage;
+class CartTest extends BaseTest {
 
     @Test
-    public void testIncorrectUser() {
+    void testDeleteProduct() {
         homePage.addProducts();
         homePage.goToCart();
-        cartPage = new CartPage(driver);
         assertTrue(cartPage.deleteProductTop());
+    }
+
+    @Test
+    void testSearchProductsAndVerifyCartAfterLogin(){
+        homePage.goToProducts();
+
+        Integer initialProducts = productPage.searchProduct("Jeans");
+        productPage.addProductsToCart();
+
+        homePage.goToCart();
+        assertEquals(cartPage.getAllProducts().size(), initialProducts);
+
+        homePage.goToLoginPage();
+
+        loginPage.sendLogin("taniazoelpoveda@gmail.com", "password");
+        homePage.goToCart();
+        assertEquals(cartPage.getAllProducts().size(), initialProducts);
     }
 }

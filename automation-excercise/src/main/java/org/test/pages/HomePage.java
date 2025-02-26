@@ -11,10 +11,13 @@ public class HomePage extends CommonActionPages {
     private WebElement linkLogin;
 
     @FindBy(xpath = "//a[@href='/contact_us']")
-    private WebElement lickContactUs;
+    private WebElement linkContactUs;
 
     @FindBy(xpath = "//a[@href='/view_cart']")
-    private WebElement lickCart;
+    private WebElement linkCart;
+
+    @FindBy(xpath = "//a[@href='/products']")
+    private WebElement linkProducts;
 
 
     @FindBy(xpath = "//a[@data-product-id='1']")
@@ -37,17 +40,19 @@ public class HomePage extends CommonActionPages {
     }
 
     public void goToContactUsPage() {
-        waitExplicitTime(lickContactUs);
-        selectElement(lickContactUs);
+        waitExplicitTime(linkContactUs);
+        selectElement(linkContactUs);
     }
 
     public void goToCart() {
-        waitExplicitTime(lickCart);
-        selectElement(lickCart);
+        waitExplicitTime(linkCart);
+        selectElement(linkCart);
     }
 
-
-
+    public void goToProducts() {
+        waitExplicitTime(linkProducts);
+        selectElement(linkProducts);
+    }
     public void addProducts(){
         addProduct(addProductTop);
         addProduct(addProductTshirt);
